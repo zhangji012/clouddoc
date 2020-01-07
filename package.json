@@ -1,0 +1,73 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "main": "main.js",
+  "description": "Online Markdown Editor using Qiniu cloud service",
+  "author": {
+    "name": "Zhang Ji",
+    "email": "529945035@qq.com"
+  },
+  "repository": "git@github.com:zhangji012/clouddoc.git",
+  "private": true,
+  "dependencies": {
+    "electron-store": "^5.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "buildMain": "webpack",
+    "onlyEle": "nodemon --watch main.js --watch src/menuTemplate.js --exec \"electron .\"",
+    "ele": "electron .",
+    "dev": "concurrently \"wait-on http://localhost:3000 && electron .\" \"cross-env BROWSER=none npm start\"",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "release": "cross-env GH_TOKEN=0e6304fd3b013b66470af73e30e1d4d22dde6a69 electron-builder",
+    "prerelease": "npm run build && npm run buildMain",
+    "prepack": "npm run build && npm run buildMain",
+    "predist": "npm run build && npm run buildMain"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-brands-svg-icons": "^5.12.0",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.0",
+    "classnames": "^2.2.6",
+    "concurrently": "^5.0.2",
+    "cross-env": "^6.0.3",
+    "devtron": "^1.4.0",
+    "electron": "^7.1.7",
+    "electron-builder": "^21.2.0",
+    "electron-is-dev": "^1.1.0",
+    "electron-store": "^5.1.0",
+    "electron-updater": "^4.2.0",
+    "node-sass": "^4.13.0",
+    "nodemon": "^2.0.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.3.0",
+    "react-simplemde-editor": "^4.1.0",
+    "uuidv4": "^6.0.0",
+    "wait-on": "^3.3.0"
+  }
+}
