@@ -1,0 +1,21 @@
+// 加上window后webpack就不会编译
+// 这边promise的用法比较好
+const fs = window.require('fs').promises
+
+const fileHelper = {
+  readFile: (path) => {
+    return fs.readFile(path, { encoding: 'utf8'})
+  },
+  writeFile: (path, content) => {
+    return fs.writeFile(path, content, { encoding: 'utf8'})
+  },
+  renameFile: (path, newPath) => {
+    return fs.rename(path, newPath)
+  },
+  deleteFile: (path) => {
+    return fs.unlink(path)
+  }
+}
+
+export default fileHelper
+

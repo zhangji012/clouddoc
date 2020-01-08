@@ -20,6 +20,7 @@
   3. [react哲学](https://react.docschina.org/docs/thinking-in-react.html)
   4. 项目中使用window.require代替require引入模块，使用window后webpack不会再操作，直接使用require会有问题
   5. html5中data的使用data-id  el.dataset.id
+  6. window.require('fs').promises node中使用promises
 
 ## package.json里的一些介绍
   1. "pack": "electron-builder --dir" 生成一个安装完毕的文件
