@@ -16,7 +16,7 @@ import Loader from './components/Loader'
 import useIpcRenderer from './hooks/useIpcRenderer'
 const { join, basename, extname, dirname } = window.require('path')
 const { remote, ipcRenderer } = window.require('electron')
-
+// todo 整体运行还是有问题，明天看打包，再把整个项目可以调通
 const Store = window.require('electron-store')
 // todo 看下有没有什么地方可以看到所有的store
 const fileStore = new Store({'name': 'Files Data'})

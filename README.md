@@ -23,18 +23,87 @@
   6. window.require('fs').promises node中使用promises
 
 ## package.json里的一些介绍
-  1. "pack": "electron-builder --dir" 生成一个安装完毕的文件
+  1. "pack": "electron-builder --dir" 生成一个安装完毕的文件，不是安装的程序
   2. "dist": "electron-builder"  真正的生成一个安装包 
   3. "prepack": "npm run build && npm run buildMain",  钩子命令，在运行pack之前先运行build和buildMain
   4. files 手动配置打包文件，但是这样的话，所有的都需要配置
-  5. homepage 使用相对路径
+  5. "homepage": "./",  使用相对路径
   6. extraMetadata 用这个路径替换原始的路径
   7. 自动发布release的部分非常好，整张最后再看一遍
+  8. "extends": null, 设置的原因 The name of a built-in configuration preset or path to config file (relative to project dir). Currently, only react-cra is supported
+  9. 
+
+  ```
+    "build": {
+    "appId": "cloudDoc",
+    "productName": "七牛云文档",
+    "copyright": "Copyright © 2019 ${author}",
+    "files": [                                    
+      "build/**/*",
+      "node_modules/**/*",
+      "settings/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"       依赖图片等静态资源       
+    },
+    "extraMetadata": {
+      "main": "./build/main.js"        入口文件
+    },
+    "publish": [
+      "github"
+    ],
+    "extends": null,
+    "mac": {
+      "category": "public.app-category.productivity",               mac上安装到分类下
+      "artifactName": "${productName}-${version}-${arch}.${ext}"    安装包名字
+    },
+    "dmg": {                                                        
+      "background": "assets/appdmg.png",
+      "icon": "assets/icon.icns",
+      "iconSize": 100,
+      "contents": [
+        {
+          "x": 380,
+          "y": 280,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 110,
+          "y": 280,
+          "type": "file"
+        }
+      ],
+      "window": {
+        "width": 500,
+        "height": 500
+      }
+    },
+    "win": {                
+      "target": [                   window下打包的2中安装包格式
+        "msi",
+        "nsis"
+      ],
+      "icon": "assets/icon.ico",
+      "artifactName": "${productName}-Web-Setup-${version}.${ext}",
+      "publisherName": "Viking Zhang"
+    },
+    "nsis": {                                        安装时一些个性化内容设置
+      "allowToChangeInstallationDirectory": true,    
+      "oneClick": false,
+      "perMachine": false
+    }
+  },
+  ```
 
 
-## 介绍的文章
+## 参考文档
   1. https://blog.csdn.net/qq_40196738/article/details/103269790
+  2. https://electronjs.org/docs
+  3. https://www.electron.build/configuration/configuration
+  4. https://juejin.im/post/5dad8141f265da5b873c778b#heading-6
 
 ## 还不清楚的地方
-  1. 更新为什么需要 dev-app-update.yml
   2. webpack.config 的__dirname: false不清楚
+   

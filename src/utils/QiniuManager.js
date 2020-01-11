@@ -5,7 +5,7 @@ const fs = require('fs')
 // 云这边平时用不到，大体知道一下就行
 // AK:  eSnIYUtEZLeWofUnzRmt_zfOXvPBekbQdwWvxK9I
 // SK:  9DaiBQg84oYuYg-IcMJDCMYrTQXpCE225ih_OAKc
-
+// Bucket名称：zhangjiclouddoc
 class QiniuManager {
   constructor(accessKey, secretKey, bucket ) {
     //generate mac

@@ -1,6 +1,5 @@
 const { app, Menu, ipcMain, dialog } = require('electron')
 const isDev = require('electron-is-dev')
-// electron-updater好的网址
 const { autoUpdater } = require('electron-updater')
 const path = require('path')
 const menuTemplate = require('./src/menuTemplate')
@@ -21,7 +20,7 @@ const createManager = () => {
 function createWindow () {
   // Create the browser window.
   require('devtron').install()
-  // todo updateConfigPath这样写的目的，yml的作用
+  // todo updateConfigPath这样写的目的，yml的作用,在release时会生成的用来确定release从哪里拉取的源头
   if (isDev) {
     autoUpdater.updateConfigPath = path.join(__dirname, 'dev-app-update.yml')
   }
@@ -73,6 +72,7 @@ function createWindow () {
     width: 1440,
     height: 768,   
   }
+  // todo 这边为什么不是build下的index.html
   const urlLocation = isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, './index.html')}`
   mainWindow = new AppWindow(mainWindowConfig, urlLocation)
   mainWindow.on('closed', () => {
