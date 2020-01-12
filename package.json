@@ -45,7 +45,9 @@
     "extraMetadata": {
       "main": "./build/main.js"
     },
-    "publish": [ "github"],
+    "publish": [
+      "github"
+    ],
     "extends": null,
     "mac": {
       "category": "public.app-category.productivity",

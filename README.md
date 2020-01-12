@@ -1,6 +1,7 @@
 ## 安装注意
   1. electron使用cnpm
   2. [electron-builder所有的下载方式都不行，翻墙也不行](https://blog.csdn.net/cctvcqupt/article/details/87904368),这个网址的方法感觉有些复杂，先建个项目单独yarn add electron-builder --dev可以，再复制过来的
+  3. 
 
 ## 使用的一些库的作用
   1. electron-is-dev 判断是否在开发环境 
@@ -106,4 +107,5 @@
 
 ## 还不清楚的地方
   2. webpack.config 的__dirname: false不清楚
+  3. 使用npm安装webpakc-cli目前一直出现问题，升级重装降级都没有效果，使用其他方式先安装webpack-cli，运行时还是会重新安装，但是还是失败，暂时没有解决的思路
    
